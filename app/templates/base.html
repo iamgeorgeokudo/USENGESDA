@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Welcome to USENGE SDA Church{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+        /* General Styles */
+        body {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .mobile-menu.show {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            margin: 10px 0;
+            padding: 10px 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.5)
+                ),
+                url('/app/static/images/background.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 200px 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Ministries Section */
+        .ministries {
+            padding: 50px 0;
+        }
+
+        .ministries .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .ministries h2 {
+            flex: 1 1 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .ministry-card {
+            flex: 1 1 30%;
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .ministry-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .ministry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .ministry-card .card-body {
+            padding: 20px;
+        }
+
+        .ministry-card .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            margin-left: 10px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        footer .social-icons a:hover {
+            color: #ccc;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about .container,
+            .ministries .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about .content,
+            .about .image,
+            .ministry-card {
+                flex: 1 1 100%;
+            }
+
+            footer .container {
+                flex-direction: column;
+            }
+
+            footer .social-icons {
+                margin-top: 20px;
+            }
+        }
+
+        {% block styles %}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="navbar-brand">USENGE SDA Church</a>
+        <div class="nav-links">
+            <a href="{{ url_for('main.index') }}">Home</a>
+            <a href="#ministries">Ministries</a>
+            <a href="{{ url_for('main.events') }}">Events</a>
+            <a href="{{ url_for('main.contact') }}">Contact Us</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+            {% endif %}
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="nav-links mobile-menu">
+        <a href="{{ url_for('main.index') }}">Home</a>
+        <a href="#ministries">Ministries</a>
+        <a href="{{ url_for('main.events') }}">Events</a>
+        <a href="{{ url_for('main.contact') }}">Contact Us</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a>
+        {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; USENGE SDA Church 2023</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll JavaScript -->
+    <script>
+        function toggleMenu() {
+            var navLinks = document.querySelector('.mobile-menu');
+            navLinks.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

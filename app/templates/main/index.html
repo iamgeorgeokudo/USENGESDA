@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome to USENGE SDA Church
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Welcome to USENGE SDA Church</h1>
+    <p>
+      We are a vibrant community of believers dedicated to spreading the
+      love of Christ.
+    </p>
+    <a href="{{ url_for('main.chat') }}" class="btn">Chat With Our Bot</a>
+  </div>
+</section>
+
+<!-- Ministries Section -->
+<section class="ministries" id="ministries">
+  <div class="container">
+    <h2>Our Ministries</h2>
+    <div class="ministry-card">
+      <img
+        src="{{ url_for('static', filename='images/youthcamp.jpg') }}"
+        alt="Youth Ministry"
+        class="card-img-top"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Youth Ministry</h5>
+        <p class="card-text">
+          Empowering and guiding our youth towards a life of faith and
+          purpose.
+        </p>
+      </div>
+    </div>
+    <div class="ministry-card">
+      <img
+        src="{{ url_for('static', filename='images/women.jpeg') }}"
+        alt="Women's Ministry"
+        class="card-img-top"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Women's Ministry</h5>
+        <p class="card-text">
+          Fostering a supportive community for women to grow in their
+          faith and personal development.
+        </p>
+      </div>
+    </div>
+    <div class="ministry-card">
+      <img
+        src="{{ url_for('static', filename='images/menn.jpeg') }}"
+        alt="Men's Ministry"
+        class="card-img-top"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Men's Ministry</h5>
+        <p class="card-text">
+          Supporting men in their spiritual journey through fellowship
+          and mentorship.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
